@@ -38,7 +38,7 @@ namespace FastTranslateApp
         {
             string result;
             langList.TryGetValue(code, out result);
-            var vv = langList.Fi;
+           // var vv = langList.Fi;
             return result;
         }
     }

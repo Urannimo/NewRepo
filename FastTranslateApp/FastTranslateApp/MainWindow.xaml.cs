@@ -29,8 +29,8 @@ namespace FastTranslateApp
         private void translateButton_Click(object sender, RoutedEventArgs e)
         {
             TextRange textRange = new TextRange(resultTextBox.Document.ContentStart, resultTextBox.Document.ContentEnd);
-            KeyValuePair gg = langListFrom.SelectedItem;
-            //textRange.Text = langListFrom.SelectedItem;
+            var gg = (KeyValuePair<string, string>)langListFrom.SelectedItem;
+            textRange.Text = langListFrom.SelectedItem.ToString();
         }
 
         private void getLangButton_Click(object sender, RoutedEventArgs e)
