@@ -5,23 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FastTranslateApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="400">
     <Window.Resources>
         <ObjectDataProvider x:Key="LangChoices" ObjectType="{x:Type local:LangDict}" MethodName="GetLangChoices"/>
     </Window.Resources>
     <Grid>
-        <TextBox Name="sourceTextBox" HorizontalAlignment="Left" Height="23" Margin="45,32,0,0" TextWrapping="Wrap" Text="Рыба" VerticalAlignment="Top" Width="191"/>
-        <Button Name ="translateButton" Content="Перевести" HorizontalAlignment="Left" Margin="218,93,0,0" VerticalAlignment="Top" Width="75" Click="translateButton_Click"/>
-        <RichTextBox Name="resultTextBox" HorizontalAlignment="Left" Height="100" Margin="45,147,0,0" VerticalAlignment="Top" Width="436">
+        <TextBox Name="sourceTextBox" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" TextWrapping="Wrap" Text="Рыба" VerticalAlignment="Top" Width="250"/>
+        <Button Name ="translateButton" Content="Перевести" HorizontalAlignment="Left" Margin="287,148,0,0" VerticalAlignment="Top" Width="75" Click="translateButton_Click"/>
+        <RichTextBox Name="resultTextBox" HorizontalAlignment="Left" Height="35" Margin="10,75,0,0" VerticalAlignment="Top" Width="250">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBoxrr"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Name="getLangButoon" Content="Список языков" HorizontalAlignment="Left" Margin="45,93,0,0" VerticalAlignment="Top" Width="110"/>
-        <Button x:Name ="getLangButton" Content="Определить" HorizontalAlignment="Left" Margin="349,93,0,0" VerticalAlignment="Top" Width="75" Click="getLangButton_Click"/>
-        <ComboBox x:Name="langListFrom" HorizontalAlignment="Left" Margin="322,33,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Source={StaticResource LangChoices}}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding myViewModelProperty}"/>
+        <Button Name="getLangButoon" Content="Список языков" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="110"/>
+        <Button x:Name ="getLangButton" Content="Определить" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top" Width="35" Click="getLangButton_Click" Height="35"/>
+        <ComboBox x:Name="langListTo" HorizontalAlignment="Left" Margin="265,75,0,0" VerticalAlignment="Top" Width="70" ItemsSource="{Binding Source={StaticResource LangChoices}}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding myViewModelProperty}" Height="35"/>
+        <Button x:Name ="swapButton" Content="Поменять" HorizontalAlignment="Left" Margin="167,50,0,0" VerticalAlignment="Top" Width="75" Click="swapButton_Click"/>
+        <ComboBox x:Name="langListFrom" HorizontalAlignment="Left" Margin="265,10,0,0" VerticalAlignment="Top" Width="70" ItemsSource="{Binding Source={StaticResource LangChoices}}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding myViewModelProperty}" Height="35"/>
 
 
     </Grid>

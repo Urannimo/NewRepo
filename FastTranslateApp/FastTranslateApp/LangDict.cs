@@ -31,7 +31,7 @@ namespace FastTranslateApp
 
         public Dictionary<string, string> GetLangChoices()
         {
-            return langList;
+            return langList.OrderBy(x => x.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         public string getLanguageByCode(string code)

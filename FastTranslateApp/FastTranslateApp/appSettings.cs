@@ -14,6 +14,7 @@ namespace FastTranslateApp
 
         public static string apiBaseDetect = "https://translate.yandex.net/api/v1.5/tr.json/detect?key=";
         public static string apiBaseAllLang = "https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=";
+        public static string apiBaseTranslate = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=";
 
         public static string getApikey()
         {

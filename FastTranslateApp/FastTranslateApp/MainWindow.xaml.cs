@@ -29,8 +29,12 @@ namespace FastTranslateApp
         private void translateButton_Click(object sender, RoutedEventArgs e)
         {
             TextRange textRange = new TextRange(resultTextBox.Document.ContentStart, resultTextBox.Document.ContentEnd);
-            var gg = (KeyValuePair<string, string>)langListFrom.SelectedItem;
-            textRange.Text = langListFrom.SelectedItem.ToString();
+
+            HttpWebRequest newReq = WebRequest.CreateHttp(appSettings.apiBaseTranslate + appSettings.getApikey() + "&text=" + sourceTextBox.Text + "&lang=ru-" + ((KeyValuePair<string, string>)langListTo.SelectedItem).Key);
+
+            dynamic buf = JsonConvert.DeserializeObject<dynamic>(Sender.sendRequest(newReq));
+
+            textRange.Text = (string)buf.text[0];
         }
 
         private void getLangButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +44,7 @@ namespace FastTranslateApp
             var response = getLanguage(sourceTextBox.Text);
             dynamic buf = JsonConvert.DeserializeObject<dynamic>(response);
 
-            textRange.Text = languages.getLanguageByCode((string)buf.lang);
+            langListTo.SelectedValue = (string)buf.lang;
         }
 
         private string getLanguage(string baseText)
@@ -54,6 +58,15 @@ namespace FastTranslateApp
             {
                 return e.Message;
             }
+        }
+
+        private void swapButton_Click(object sender, RoutedEventArgs e)
+        {
+            var textRange = new TextRange(resultTextBox.Document.ContentStart, resultTextBox.Document.ContentEnd);
+
+            var buf = textRange.Text;
+            textRange.Text = sourceTextBox.Text;
+            sourceTextBox.Text = buf;
         }
     }
 }
